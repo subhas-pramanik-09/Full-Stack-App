@@ -1,6 +1,6 @@
 const Prospect = require("../models/Prospect.js");
 
-// create donor
+// CREATE DONOR
 
 const createProspect = async (req, res) => {
   try {
@@ -12,7 +12,7 @@ const createProspect = async (req, res) => {
   }
 };
 
-// get all donors
+// GET ALL DONORS
 
 const getAllProspects = async (req, res) => {
   try {
@@ -23,7 +23,7 @@ const getAllProspects = async (req, res) => {
   }
 };
 
-// update donor
+// UPDATE DONOR
 
 const updateProspect = async (req, res) => {
   try {
@@ -38,8 +38,7 @@ const updateProspect = async (req, res) => {
   }
 };
 
-// get one donor
-
+// GET ONE DONOR
 const getOneProspect = async (req, res) => {
   try {
     const prospect = await Prospect.findById(req.params.id);
@@ -49,7 +48,7 @@ const getOneProspect = async (req, res) => {
   }
 };
 
-// delete donor
+// DELETE DONOR
 
 const deleteProspect = async (req, res) => {
   try {
@@ -61,9 +60,9 @@ const deleteProspect = async (req, res) => {
 };
 
 module.exports = {
-  createProspect,
+  deleteProspect,
+  getOneProspect,
   getAllProspects,
   updateProspect,
-  getOneProspect,
-  deleteProspect,
+  createProspect,
 };

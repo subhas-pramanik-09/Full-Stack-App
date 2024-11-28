@@ -1,7 +1,7 @@
 const ejs = require("ejs");
 const dotenv = require("dotenv");
-const Donor = require("../models/Donor");
-const sendMail = require("../helpers/sendmail");
+const Donor = require("../models/Donor.js");
+const sendMail = require("../helpers/sendmail.js");
 
 dotenv.config();
 
@@ -28,7 +28,7 @@ const sendDonorDetailsEmail = async () => {
           let messageoption = {
             from: process.env.EMAIL,
             to: donor.email,
-            subject: "Hello, Blood Donor.",
+            subject: "Hello, Blood Bridge Donor.",
             html: data,
           };
 

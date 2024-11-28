@@ -1,28 +1,25 @@
 const express = require("express");
-const {
-  createDonor,
-  getAlldonors,
-  updateDonor,
-  getOneDonor,
-  deleteDonor,
-  getDonorsStats,
-} = require("../controllers/donor.js");
-const {
-  verifyTokenAndAuthorization,
-} = require("../middlewares/verifyToken.js");
+const { createDonor, getAlldonors, updateDonor, getOneDonor, deleteDonor, getDonorsStats } = require("../controllers/donor.js");
+const { verifyToken } = require("../middlewares/verifyToken.js");
 const router = express.Router();
 
-// add donor
-router.post("/", verifyTokenAndAuthorization, createDonor);
-// get all donor
+// ADD DONOR
+router.post("/",verifyToken, createDonor);
+
+// GET ALL DONORS
 router.get("/", getAlldonors);
-// update donor
+
+// UPDATE DONOR
 router.put("/:id", updateDonor);
-//get one donor
+
+//GET ONE DONOR
 router.get("/find/:id", getOneDonor);
-//delete donor
+
+//DELETE DONOR
 router.delete("/:id", deleteDonor);
-// donor stats
+
+//DONOR STATS
 router.get("/stats", getDonorsStats);
 
-module.exports = router;
+
+module.exports=router
