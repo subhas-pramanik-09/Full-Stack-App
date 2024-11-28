@@ -2,10 +2,9 @@ const CryptoJs = require("crypto-js");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User.js");
 const dotenv = require("dotenv");
-
 dotenv.config();
 
-// register user
+// REGISTER USER
 
 const registerUser = async (req, res) => {
   const newUser = User({
@@ -25,14 +24,16 @@ const registerUser = async (req, res) => {
   }
 };
 
-// login user
+//LOGIN USER
 
 const loginUser = async (req, res) => {
+    console.log(req.body.email);
   try {
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({email: req.body.email });
     if (!user) {
       return res.status(401).json("You have not registered");
     }
+
     const hashedPassword = CryptoJs.AES.decrypt(
       user.password,
       process.env.PASS
@@ -41,7 +42,7 @@ const loginUser = async (req, res) => {
     const originalPassword = hashedPassword.toString(CryptoJs.enc.Utf8);
 
     if (originalPassword !== req.body.password) {
-      return res.status(500).json("Wrong Password");
+      return res.status(500).json("wrong Password");
     }
 
     const { password, ...info } = user._doc;
@@ -57,5 +58,4 @@ const loginUser = async (req, res) => {
     res.status(500).json(error);
   }
 };
-
-module.exports = { registerUser, loginUser };
+module.exports={loginUser, registerUser}

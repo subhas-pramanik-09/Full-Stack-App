@@ -8,15 +8,19 @@ const {
 } = require("../controllers/prospect.js");
 const router = express.Router();
 
-// add prospect
+// ADD PROSPECT
 router.post("/", createProspect);
-// get all prospects
+
+//GET ALL PROSPECTS
 router.get("/", getAllProspects);
-//update prospect
+
+// UPDATE PROSPECT
 router.put("/:id", updateProspect);
-//delete prospect
+
+// DELETE PROSPECT
 router.delete("/:id", deleteProspect);
-// get one prospect
-router.post("/find/:id", getOneProspect);
+
+// GET ONE PROSPECT
+router.get("/find/:id", getOneProspect);
 
 module.exports = router;

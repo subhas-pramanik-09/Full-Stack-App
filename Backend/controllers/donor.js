@@ -1,6 +1,6 @@
-const Donor = require("../models/Doner.js");
+const Donor = require("../models/Donor.js");
 
-// create donor
+// CREATE DONOR
 
 const createDonor = async (req, res) => {
   try {
@@ -12,7 +12,7 @@ const createDonor = async (req, res) => {
   }
 };
 
-// get all donors
+// GET ALL DONORS
 
 const getAlldonors = async (req, res) => {
   try {
@@ -23,7 +23,7 @@ const getAlldonors = async (req, res) => {
   }
 };
 
-// update donor
+// UPDATE DONOR
 
 const updateDonor = async (req, res) => {
   try {
@@ -38,8 +38,7 @@ const updateDonor = async (req, res) => {
   }
 };
 
-// get one donor
-
+// GET ONE DONOR
 const getOneDonor = async (req, res) => {
   try {
     const donor = await Donor.findById(req.params.id);
@@ -49,7 +48,7 @@ const getOneDonor = async (req, res) => {
   }
 };
 
-// delete donor
+// DELETE DONOR
 
 const deleteDonor = async (req, res) => {
   try {
@@ -60,8 +59,7 @@ const deleteDonor = async (req, res) => {
   }
 };
 
-// stats
-
+// STATS
 const getDonorsStats = async (req, res) => {
   try {
     const stats = await Donor.aggregate([
@@ -72,18 +70,10 @@ const getDonorsStats = async (req, res) => {
         },
       },
     ]);
-
-    res.stats(200).json(stats);
+    res.status(200).json(stats);
   } catch (error) {
-    res.stats(500).json(error);
+    res.status(500).json(error);
   }
 };
 
-module.exports = {
-  createDonor,
-  getAlldonors,
-  updateDonor,
-  getOneDonor,
-  deleteDonor,
-  getDonorsStats,
-};
+module.exports={deleteDonor,getOneDonor,getAlldonors,getDonorsStats,updateDonor,createDonor}

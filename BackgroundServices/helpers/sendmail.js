@@ -6,7 +6,6 @@ function createTransporter(config) {
   const transporter = nodemailer.createTransport(config);
   return transporter;
 }
-
 let configurations = {
   service: "gmail",
   host: "smtp.gmail.com",
@@ -22,7 +21,7 @@ const sendMail = async (messageoption) => {
   const transporter = await createTransporter(configurations);
   await transporter.verify();
   await transporter.sendMail(messageoption, (error, info) => {
-    if (error) {
+    if (err) {
       console.log(error);
     }
     console.log(info);
